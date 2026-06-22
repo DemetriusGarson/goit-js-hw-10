@@ -1,4 +1,4 @@
-.feedback-form {
+/* .feedback-form {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -6,7 +6,7 @@
     padding: 24px;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 label {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ textarea {
         height: 80px;
 }
 
-button {
+.form button {
     display: flex;
         align-items: center;
         justify-content: center;
