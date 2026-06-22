@@ -7,6 +7,10 @@ import 'izitoast/dist/css/iziToast.min.css';
 const refs = {
   inputDateTime: document.querySelector('#datetime-picker'),
   startButton: document.querySelector('button[data-start]'),
+  days: document.querySelector('span[data-days]'),
+  hours: document.querySelector('span[data-hours]'),
+  minutes: document.querySelector('span[data-minutes]'),
+  seconds: document.querySelector('span[data-seconds]'),
 };
 
 refs.inputDateTime.removeAttribute('disabled');
@@ -36,25 +40,29 @@ const options = {
 
 flatpickr(refs.inputDateTime, options);
 
-console.log(currentDate);
-
 refs.startButton.addEventListener('click', onStartButtonClick);
 
 function onStartButtonClick(event) {
   refs.startButton.setAttribute('disabled', 'true');
-  refs.inputDateTime.setAttribute('disabled', 'ture');
+  refs.inputDateTime.setAttribute('disabled', 'true');
+  updateTimer();
   const intervalId = setInterval(() => {
     if (Date.now() >= userSelectedDate) {
+      refs.inputDateTime.removeAttribute('disabled');
       clearInterval(intervalId);
     } else {
-      const remainTime = userSelectedDate.getTime() - Date.now();
-      updateTimer(remainTime);
+      updateTimer();
     }
   }, 1000);
 }
-// !!!!!!!!!!!!!!!!!
-function updateTimer(remainTime) {
-  const convertedDate = convertMs(remainTime);
+//!!!!!!!!!!!!!!!!!
+function updateTimer() {
+  const remainTime = userSelectedDate.getTime() - Date.now();
+  const { days, hours, minutes, seconds } = convertMs(remainTime);
+  refs.days.textContent = String(days).padStart(2, 0);
+  refs.hours.textContent = String(hours).padStart(2, 0);
+  refs.minutes.textContent = String(minutes).padStart(2, 0);
+  refs.seconds.textContent = String(seconds).padStart(2, 0);
 }
 //!!!!!!!!!!!!!
 function convertMs(ms) {

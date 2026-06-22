@@ -42,16 +42,21 @@ textarea {
         gap: 10px;
 
         border-radius: 8px;
-        border: none;
+        border: 0px;
         padding: 8px 16px;
-        width: 95px;
+        width: 360px;
         height: 40px;
         background: #4e75ff;
-        
-
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: 0.04em;
-        color: #fff;
+        color: white;
 }
+
+fieldset label {
+    display: flex;
+    flex-direction: row;
+}
+
+.form input[type=radio]{
+ width: auto;
+ height: auto;
+}
+
